@@ -8,7 +8,7 @@ APP_PASSWORD = os.getenv("GMAIL_APP_PASSWORD")
 EMAIL = os.getenv("GMAIL_EMAIL")
 
 def send_email(subject, body):
-  logging.info("Sending email...")
+  logging.info("Sending email notification...")
   
   # Create the email
   msg = MIMEMultipart()

@@ -7,7 +7,7 @@ import logging
 def check_availability(driver, pageUrl, court_name):
   driver.get(pageUrl)
   time.sleep(1)
-  logging.info(f"-> Checking availability for {court_name}...")
+  logging.info(f"===================== Checking availability for {court_name}... =====================")
 
   WEEK_NAME_1 = "this week"
   WEEK_NAME_2 = "next week"

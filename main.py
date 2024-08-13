@@ -64,7 +64,10 @@ def main():
     logging.error(f"An error occurred: {e}")
     has_error = True
 
+  logging.info("===============================================================================")
+
   if len(data) > 0:
+    logging.info("Available 1h weekend slots found!")
     subject = "Available Weekend Badminton Slots Found!"
     body = ""
     for slot in data:
