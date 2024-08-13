@@ -71,7 +71,7 @@ def main():
       body += f"{slot['message']}\n"
     send_email(subject, body)
   else:
-    logging.info("No available 1h weekend slots found.")
+    logging.info("Unfortunately, no available 1h weekend slots found.")
   
   driver.quit()
 
