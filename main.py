@@ -21,7 +21,6 @@ logging.basicConfig(
   ]
 )
 
-
 FACILITY_ID = {
   'East A': '5dd9d9de-c567-472f-8f92-c0b0040fce0b',
   'East B': '4f41d717-8114-4c10-a1ab-2fcbab4c0b73',
@@ -32,7 +31,6 @@ FACILITY_ID = {
   'West G': '4a1cefdc-7fc6-434b-b1cc-aef762116251',
   'West H': '30d9b4e5-7053-4c66-ae12-2ba86a46bad8'
 }
-
 
 def get_court_url(court_name):
   return f'https://unimelb.perfectmind.com/32617/Clients/BookMe4LandingPages/Facility?facilityId={FACILITY_ID[court_name]}&widgetId=15f6af07-39c5-473e-b053-96653f77a406&calendarId=bce15730-1f38-4e5c-889c-856322a7f877'
@@ -61,6 +59,8 @@ def main():
     logging.error(f"An error occurred: {e}")
     has_error = True
 
+  driver.quit()
+
   logging.info("===============================================================================")
 
   if len(data) > 0:
@@ -69,7 +69,6 @@ def main():
   else:
     logging.info("Unfortunately, no available 1h weekend slots found. 🤷‍♂️")
   
-  driver.quit()
 
   if has_error:
     logging.info("Job Failed! 😢")
