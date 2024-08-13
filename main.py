@@ -44,13 +44,14 @@ def get_court_url(court_name):
 def main():
   options = Options()
   options.add_argument("--headless")  
+  options.add_argument("--no-sandbox") # Bypass OS security model
+  options.add_argument("--disable-dev-shm-usage") # Overcome limited resource problems
+
   options.add_argument("--window-size=1920x1080")  # Set the window size to 1920x1080
   # Disable logging
   options.add_argument("--log-level=3")  # INFO = 0, WARNING = 1, LOG_ERROR = 2, LOG_FATAL = 3
   capabilities = DesiredCapabilities.CHROME
   capabilities["goog:loggingPrefs"] = {"driver": "OFF", "browser": "OFF"}  # Disable logs
-
-  print('chrome driver path:', CHROME_DRIVER_PATH)
 
   # Setup the WebDriver
   driver = webdriver.Chrome(CHROME_DRIVER_PATH, options=options, desired_capabilities=capabilities)
