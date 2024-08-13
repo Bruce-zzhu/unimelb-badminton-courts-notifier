@@ -50,6 +50,8 @@ def main():
   capabilities = DesiredCapabilities.CHROME
   capabilities["goog:loggingPrefs"] = {"driver": "OFF", "browser": "OFF"}  # Disable logs
 
+  print('chrome driver path:', CHROME_DRIVER_PATH)
+
   # Setup the WebDriver
   driver = webdriver.Chrome(CHROME_DRIVER_PATH, options=options, desired_capabilities=capabilities)
   driver.maximize_window()
