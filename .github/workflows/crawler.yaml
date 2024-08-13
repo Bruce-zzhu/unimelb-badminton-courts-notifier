@@ -13,6 +13,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Set timezone to AEST
+        run: |
+          sudo timedatectl set-timezone Australia/Sydney
+
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
