@@ -47,7 +47,7 @@ def main():
   driver = webdriver.Chrome(options=options)
   driver.maximize_window()
 
-  logging.info("Start crawling...")
+  logging.info("Start crawling... 🐞")
   start_time = time.time()
 
   login(driver)
