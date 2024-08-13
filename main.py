@@ -70,6 +70,8 @@ def main():
     for slot in data:
       body += f"{slot['message']}\n"
     send_email(subject, body)
+  else:
+    logging.info("No available 1h weekend slots found.")
   
   driver.quit()
 
