@@ -14,10 +14,9 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Set up Chrome and ChromeDriver
-        uses: browser-actions/setup-chrome@v1
+        uses: nanasess/setup-chromedriver@v2
         with:
-          chrome-version: latest
-          driver-version: latest
+          chromedriver-version: latest
 
       - name: Set up Python
         uses: actions/setup-python@v2
