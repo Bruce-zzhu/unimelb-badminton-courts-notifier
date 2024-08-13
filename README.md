@@ -9,7 +9,7 @@ No one can book badminton courts at Melbourne uni earlier than me 😎
 ### Run the Program
 1. Enable the program by setting `RUN_PROGRAM` to `True` in `config.py`
 
-2. Install dependencies if needed
+2. Install dependencies
     ```
     pip install -r requirements.txt
     ```
