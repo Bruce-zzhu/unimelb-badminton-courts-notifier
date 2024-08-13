@@ -25,5 +25,5 @@ def login(driver):
   # Wait for the login to complete and redirect
   time.sleep(1)  # Adjust the sleep time according to your page load speed
 
-  logging.info("I have logged in")
+  logging.info("I have logged in, Yay!")
 

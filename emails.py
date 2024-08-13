@@ -27,7 +27,7 @@ def send_email(subject, body):
 
     # Send the email
     server.send_message(msg)
-    logging.info("Email sent successfully")
+    logging.info("Email sent successfully! 📩")
   except Exception as e:
     logging.error(f"Failed to send email: {e}")
   finally:

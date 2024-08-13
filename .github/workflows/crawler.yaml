@@ -2,7 +2,7 @@ name: Run Crawler Daily
 
 on:
   schedule:
-    - cron: '0 14 * * *'  # This cron expression schedules the script to run daily at midnight AEST
+    - cron: '0 14 * * *'  # Schedules to run daily at midnight AEST
   workflow_dispatch:  # Allows manual triggering of the workflow from GitHub
 
 jobs:

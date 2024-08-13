@@ -3,7 +3,6 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 import time
 import logging
-import os
 from dotenv import load_dotenv
 
 from login import login
@@ -23,7 +22,6 @@ logging.basicConfig(
   ]
 )
 
-CHROME_DRIVER_PATH = os.getenv("CHROME_DRIVER_PATH")
 
 FACILITY_ID = {
   'East A': '5dd9d9de-c567-472f-8f92-c0b0040fce0b',
@@ -67,21 +65,21 @@ def main():
   logging.info("===============================================================================")
 
   if len(data) > 0:
-    logging.info("Available 1h weekend slots found!")
+    logging.info("Available 1h weekend slots found!🏸")
     subject = "Available Weekend Badminton Slots Found!"
     body = ""
     for slot in data:
       body += f"{slot['message']}\n"
     send_email(subject, body)
   else:
-    logging.info("Unfortunately, no available 1h weekend slots found.")
+    logging.info("Unfortunately, no available 1h weekend slots found. 🤷‍♂️")
   
   driver.quit()
 
   if has_error:
-    logging.info("Job Failed!")
+    logging.info("Job Failed! 😢")
   else:
-    logging.info("Job Completed!")
+    logging.info("Job Completed! 🎉")
 
   end_time = time.time()
   elapsed_time = end_time - start_time
