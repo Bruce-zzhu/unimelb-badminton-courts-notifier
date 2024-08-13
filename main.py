@@ -89,7 +89,10 @@ def main():
 
 
 if __name__ == "__main__":
+  # Clear the logs file
+  open("logs.log", "w").close()
+  
   if RUN_PROGRAM:
     main()
   else:
-    print("Program is disabled.")
+    logging.warn("Program is disabled.")

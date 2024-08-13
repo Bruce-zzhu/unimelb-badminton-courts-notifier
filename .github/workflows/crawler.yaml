@@ -1,0 +1,41 @@
+name: Run Crawler Daily
+
+on:
+  schedule:
+    - cron: '0 14 * * *'  # This cron expression schedules the script to run daily at midnight AEST
+  workflow_dispatch:  # Allows manual triggering of the workflow from GitHub
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Chrome
+        uses: browser-actions/setup-chrome@v1
+
+      - name: Set up ChromeDriver
+        uses: actions/setup-chromedriver@v1
+        with:
+          version: latest
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'  # Use the version of Python you need
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run Python script
+        env:
+          UNIMELB_EMAIL: ${{ secrets.UNIMELB_EMAIL }}
+          UNIMELB_PASSWORD: ${{ secrets.UNIMELB_PASSWORD }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          GMAIL_EMAIL: ${{ secrets.GMAIL_EMAIL }}
+        run: |
+          python main.py 
