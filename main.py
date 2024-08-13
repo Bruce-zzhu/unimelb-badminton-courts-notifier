@@ -49,14 +49,8 @@ def main():
   options.add_argument('--disable-gpu')
   options.add_argument('--remote-debugging-port=9222')
 
-  options.add_argument("--window-size=1920x1080")  # Set the window size to 1920x1080
-  # Disable logging
-  options.add_argument("--log-level=3")  # INFO = 0, WARNING = 1, LOG_ERROR = 2, LOG_FATAL = 3
-  capabilities = DesiredCapabilities.CHROME
-  capabilities["goog:loggingPrefs"] = {"driver": "OFF", "browser": "OFF"}  # Disable logs
-
   # Setup the WebDriver
-  driver = webdriver.Chrome(CHROME_DRIVER_PATH, options=options, desired_capabilities=capabilities)
+  driver = webdriver.Chrome(options=options)
   driver.maximize_window()
 
   logging.info("Start crawling...")
