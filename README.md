@@ -2,19 +2,21 @@
 
 A bot to crawl the information of the availability of badminton courts at Melbourne uni.
 
-Its task is to notify me if there is any available 1-hour slot on this and next weekends
+Its task is to notify me by sending an email if there is any available 1-hour slot on this or next weekends
 
 No one can book badminton courts at Melbourne uni earlier than me 😎
 
 ### Run the Program
-Enable the program by setting `RUN_PROGRAM` to `True` in `config.py`
+1. Enable the program by setting `RUN_PROGRAM` to `True` in `config.py`
 
-Install dependencies if needed
-```
-pip install -r requirements.txt
-```
+2. Install dependencies if needed
+    ```
+    pip install -r requirements.txt
+    ```
 
-Start crawling 🤠
-```
-python main.py
-```
+3. Create a file `.env` and set the environment variables following `.env.example`
+
+4. Start crawling 🤠
+    ```
+    python main.py
+    ```
