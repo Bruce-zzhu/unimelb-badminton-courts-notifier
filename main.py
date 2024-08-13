@@ -64,7 +64,7 @@ def main():
   logging.info("===============================================================================")
 
   if len(data) > 0:
-    logging.info("Available 1h weekend slots found!🏸")
+    logging.info("Available 1h weekend slots found! 🏸")
     send_email(data)
   else:
     logging.info("Unfortunately, no available 1h weekend slots found. 🤷‍♂️")
@@ -87,4 +87,4 @@ if __name__ == "__main__":
   if RUN_PROGRAM:
     main()
   else:
-    logging.warn("Program is disabled.")
+    logging.warn("Program is disabled. Set RUN_PROGRAM to True in config.py to enable it.")
