@@ -7,7 +7,12 @@ import os
 APP_PASSWORD = os.getenv("GMAIL_APP_PASSWORD")
 EMAIL = os.getenv("GMAIL_EMAIL")
 
-def send_email(subject, body):
+def send_email(data):
+  subject = "Available Weekend Badminton Slots Found!"
+  body = ""
+  for slot in data:
+    body += f"{slot['message']}\n"
+
   logging.info("Sending email notification...")
   
   # Create the email

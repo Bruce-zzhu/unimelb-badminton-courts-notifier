@@ -66,11 +66,7 @@ def main():
 
   if len(data) > 0:
     logging.info("Available 1h weekend slots found!🏸")
-    subject = "Available Weekend Badminton Slots Found!"
-    body = ""
-    for slot in data:
-      body += f"{slot['message']}\n"
-    send_email(subject, body)
+    send_email(data)
   else:
     logging.info("Unfortunately, no available 1h weekend slots found. 🤷‍♂️")
   
