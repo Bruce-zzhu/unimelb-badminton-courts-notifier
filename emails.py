@@ -10,8 +10,15 @@ EMAIL = os.getenv("GMAIL_EMAIL")
 def send_email(data):
   subject = "Available Weekend Badminton Slots Found!"
   body = ""
-  for slot in data:
-    body += f"{slot['message']}\n"
+  for court_data in data:
+    court_name = court_data["court"]
+    available_slots = court_data["data"]
+    body += f'''
+      Available slots for {court_name}:
+        {available_slots[0]['message']} 
+        {available_slots[1]['message']} 
+
+    '''
 
   logging.info("Sending email notification...")
   

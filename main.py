@@ -1,5 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 import time
 import logging
 from dotenv import load_dotenv
@@ -38,7 +39,10 @@ def get_court_url(court_name):
 
 def main():
   options = Options()
-  options.add_argument("--headless")  
+  # options.add_argument("--headless")  
+
+  # Disable driver logs
+  options.add_argument("--log-level=3")  # INFO = 0, WARNING = 1, LOG_ERROR = 2, LOG_FATAL = 3
 
   # Setup the WebDriver
   driver = webdriver.Chrome(options=options)
@@ -54,7 +58,7 @@ def main():
   try:
     for court_name in FACILITY_ID:
       availability_data = check_availability(driver, get_court_url(court_name), court_name)
-      data += availability_data
+      data.append(availability_data)
   except Exception as e:
     logging.error(f"An error occurred: {e}")
     has_error = True
