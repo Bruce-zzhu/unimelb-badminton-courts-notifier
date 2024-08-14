@@ -11,8 +11,12 @@ def send_email(data):
   subject = "Available Weekend Badminton Slots Found!"
   body = ""
   for court_data in data:
-    court_name = court_data["court"]
     available_slots = court_data["data"]
+    if len(available_slots) == 0:
+      # No available slots for this court
+      continue
+
+    court_name = court_data["court"]
     body += f'''
       Available slots for {court_name}:
         {available_slots[0]['message']} 
