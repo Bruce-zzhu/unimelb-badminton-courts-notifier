@@ -78,7 +78,7 @@ def main():
   
 
   if has_error:
-    logging.info("Job Failed! 😢")
+    logging.info("Job finished with errors. 😢")
   else:
     logging.info("Job Completed! 🎉")
 
