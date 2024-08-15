@@ -70,7 +70,7 @@ def main():
   # Remove empty data
   court_data = []
   for court in data:
-    if len(counrt['data']) > 0:
+    if len(court['data']) > 0:
       court_data.append(court)
       
   if len(court_data) > 0:
