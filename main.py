@@ -68,12 +68,9 @@ def main():
   logging.info("===============================================================================")
 
   # Remove empty data
-  court_data = []
-  for court in data:
-    if len(court['data']) > 0:
-      court_data.append(court)
-      
-  if len(court_data) > 0:
+  data = [court for court in data if len(court['data']) > 0]
+  
+  if len(data) > 0:
     logging.info("Available 1h weekend slots found! 🏸")
     send_email(data)
   else:
