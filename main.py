@@ -1,6 +1,5 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 import time
 import logging
 from dotenv import load_dotenv
@@ -71,7 +70,7 @@ def main():
   data = [court for court in data if len(court['data']) > 0]
   
   if len(data) > 0:
-    logging.info("Available 1h weekend slots found! 🏸")
+    logging.info("Available 1h weekend slots found! 🏸🏸🏸")
     send_email(data)
   else:
     logging.info("Unfortunately, no available 1h weekend slots found. 🤷‍♂️")

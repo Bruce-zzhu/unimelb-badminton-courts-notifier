@@ -27,10 +27,6 @@ def check_availability(driver, page_url, court_name):
     data = next_week_data
 
   if found:
-    # Add court name to the data
-    for d in data:
-      d['court'] = court_name
-
     logging.info(f"Availability for {court_name}:")
     logging.info(data[0]['message'])
     logging.info(data[1]['message'])
