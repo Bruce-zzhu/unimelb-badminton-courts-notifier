@@ -57,7 +57,8 @@ def main():
   try:
     for court_name in FACILITY_ID:
       availability_data = check_availability(driver, get_court_url(court_name), court_name)
-      data.append(availability_data)
+      if len(availability_data.data) > 0:
+        data.append(availability_data)
   except Exception as e:
     logging.error(f"An error occurred: {e}")
     has_error = True
@@ -66,9 +67,6 @@ def main():
 
   logging.info("===============================================================================")
 
-  # Remove empty data
-  data = [court for court in data if len(court['data']) > 0]
-  
   if len(data) > 0:
     logging.info("Available 1h weekend slots found! 🏸🏸🏸")
     send_email(data)
