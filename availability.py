@@ -23,8 +23,10 @@ def check_availability(driver, page_url, court_name):
 
     go_to_next_week(driver)
     (next_found, next_week_data) = check_week_availability(driver, WEEK_NAME_2)
+    if next_found:
+      data = next_week_data
     found = next_found
-    data = next_week_data
+    
 
   if found:
     logging.info(f"Availability for {court_name}:")
