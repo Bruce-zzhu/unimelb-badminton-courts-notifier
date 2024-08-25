@@ -50,7 +50,7 @@ def main():
   logging.info("Start crawling... 🐞")
   start_time = time.time()
 
-  login(driver)
+  # login(driver)
 
   data = []
   has_error = False
