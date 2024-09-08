@@ -1,1 +1,0 @@
-RUN_PROGRAM = True

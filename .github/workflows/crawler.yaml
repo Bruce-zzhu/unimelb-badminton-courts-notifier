@@ -37,9 +37,7 @@ jobs:
 
       - name: Run Python script
         env:
-          UNIMELB_EMAIL: ${{ secrets.UNIMELB_EMAIL }}
-          UNIMELB_PASSWORD: ${{ secrets.UNIMELB_PASSWORD }}
           GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
           GMAIL_EMAIL: ${{ secrets.GMAIL_EMAIL }}
         run: |
-          python main.py 
+          python src/main.py 

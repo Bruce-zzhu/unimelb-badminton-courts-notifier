@@ -10,19 +10,17 @@ EMAIL = os.getenv("GMAIL_EMAIL")
 def send_email(data):
   subject = "Available Weekend Badminton Slots Found!"
   body = ""
-  for court_data in data:
-    available_slots = court_data["data"]
+  for court_name in data:
+    available_slots = data[court_name]
     if len(available_slots) == 0:
       # No available slots for this court
       continue
 
-    court_name = court_data["court"]
-    body += f'''
-      Available slots for {court_name}:
-        {available_slots[0]['message']} 
-        {available_slots[1]['message']} 
-
-    '''
+    body += f'Available slots for {court_name}:\n'
+    for slot in available_slots:
+        body += f'  {slot["message"]}\n'
+    body += '\n'
+    
 
   logging.info("Sending email notification...")
   
@@ -32,7 +30,7 @@ def send_email(data):
   msg['To'] = EMAIL
   msg['Subject'] = subject
 
-  # Attach the body with HTML content (optional)
+  # Attach the body with HTML content
   msg.attach(MIMEText(body, 'plain'))
 
   try:

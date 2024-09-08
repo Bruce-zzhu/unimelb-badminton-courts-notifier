@@ -7,16 +7,14 @@ Its task is to notify me by sending an email if there is any available 1-hour sl
 No one can book badminton courts at Melbourne uni earlier than me 😎
 
 ### Run the Program
-1. Enable the program by setting `RUN_PROGRAM` to `True` in `config.py`
-
-2. Install dependencies
+1. Install dependencies
     ```
     pip install -r requirements.txt
     ```
 
-3. Create a file `.env` and set the environment variables following `.env.example`
+2. Create a file `.env` and set the environment variables following `.env.example`
 
-4. Start crawling 🤠
+3. Start crawling 🤠
     ```
-    python main.py
+    python src/main.py
     ```

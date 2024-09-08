@@ -1,13 +1,11 @@
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
 import time
 import logging
 from dotenv import load_dotenv
 
-from login import login
+from crawler import crawler
+
 from availability import check_availability
 from emails import send_email
-from config import RUN_PROGRAM
 
 load_dotenv()
 
@@ -37,43 +35,30 @@ def get_court_url(court_name):
 
 
 def main():
-  options = Options()
-  options.add_argument("--headless")  
-
-  # Disable driver logs
-  options.add_argument("--log-level=3")  # INFO = 0, WARNING = 1, LOG_ERROR = 2, LOG_FATAL = 3
-
-  # Setup the WebDriver
-  driver = webdriver.Chrome(options=options)
-  driver.maximize_window()
+  crawler.init_driver()
 
   logging.info("Start crawling... 🐞")
   start_time = time.time()
 
-  # login(driver)
-
-  data = []
   has_error = False
   try:
     for court_name in FACILITY_ID:
-      availability_data = check_availability(driver, get_court_url(court_name), court_name)
-      if len(availability_data['data']) > 0:
-        data.append(availability_data)
+      check_availability(get_court_url(court_name), court_name)
   except Exception as e:
     logging.error(f"An error occurred: {e}")
+    print(e)
     has_error = True
 
-  driver.quit()
+  crawler.driver.quit()
 
   logging.info("===============================================================================")
 
-  if len(data) > 0:
+  if len(crawler.data) > 0:
     logging.info("Available 1h weekend slots found! 🏸🏸🏸")
-    send_email(data)
+    send_email(crawler.data)
   else:
     logging.info("Unfortunately, no available 1h weekend slots found. 🤷‍♂️")
   
-
   if has_error:
     logging.info("Job finished with errors. 😢")
   else:
@@ -81,14 +66,11 @@ def main():
 
   end_time = time.time()
   elapsed_time = end_time - start_time
+  logging.info(f"Total slots found: {crawler.total_slots}")
+  logging.info(f"Total slots explored: {crawler.slots_explored}")
   logging.info(f"Time spent: {elapsed_time:.2f} seconds")
 
 
 if __name__ == "__main__":
-  # Clear the logs file
-  open("logs.log", "w").close()
-
-  if RUN_PROGRAM:
-    main()
-  else:
-    logging.warn("Program is disabled. Set RUN_PROGRAM to True in config.py to enable it.")
+  open("logs.log", "w").close() # Clear the logs file
+  main()
