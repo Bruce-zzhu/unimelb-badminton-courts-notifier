@@ -2,7 +2,7 @@ import datetime
 import time
 import logging
 from crawler import crawler, SAT_INDEX, MON_INDEX, TUE_INDEX, WED_INDEX, THU_INDEX, FRI_INDEX, SAT_INDEX
-from search_strategy import SunSearch, ForwardSearch, BackwardSearch, SearchContext
+from search_strategy import SundaySearch, ForwardSearch, BackwardSearch, SearchContext
 
 
 def check_availability(page_url, court_name):
@@ -47,7 +47,7 @@ def check_week_availability(week_name):
   elif today in [THU_INDEX, FRI_INDEX, SAT_INDEX]:
     search_context = SearchContext(ForwardSearch())
   else:
-    search_context = SearchContext(SunSearch())
+    search_context = SearchContext(SundaySearch())
 
   if search_context.search(week_name):
     return True

@@ -9,7 +9,7 @@ class SearchStrategy(ABC):
   def search(self, week_name):
     pass
 
-class SunSearch(SearchStrategy):
+class SundaySearch(SearchStrategy):
   def search(self, week_name):
     '''
     Strategy when today is Sun, search 1st and the last button
