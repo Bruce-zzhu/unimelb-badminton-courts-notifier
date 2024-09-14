@@ -10,10 +10,10 @@ class SearchStrategy(ABC):
     pass
 
 class SundaySearch(SearchStrategy):
+  '''
+    Strategy when today is Sun, search 1st and the last button as they are at the start and the end of the calendar week
+  '''
   def search(self, week_name):
-    '''
-    Strategy when today is Sun, search 1st and the last button
-    '''
     first_slot_data = crawler.get_slot_data(0)
     if first_slot_data['is_weekend']:
       message = get_message(first_slot_data, week_name)
