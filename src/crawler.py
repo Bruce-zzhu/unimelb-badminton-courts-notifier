@@ -20,6 +20,7 @@ class Crawler:
     self.buttons = []
     self.curr_court = ""
     self.data = {}
+    self.has_error = False
 
   def init_driver(self):
     options = Options()

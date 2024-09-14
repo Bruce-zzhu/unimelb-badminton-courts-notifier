@@ -40,13 +40,8 @@ def main():
   logging.info("Start crawling... 🐞")
   start_time = time.time()
 
-  has_error = False
-  try:
-    for court_name in FACILITY_ID:
-      check_availability(get_court_url(court_name), court_name)
-  except Exception as e:
-    logging.error(f"An error occurred: {e}")
-    has_error = True
+  for court_name in FACILITY_ID:
+    check_availability(get_court_url(court_name), court_name)
 
   crawler.driver.quit()
 
@@ -58,7 +53,7 @@ def main():
   else:
     logging.info("Unfortunately, no available 1h weekend slots found. 🤷‍♂️")
   
-  if has_error:
+  if crawler.has_error:
     logging.info("Job finished with errors. 😢")
   else:
     logging.info("Job Completed! 🎉")

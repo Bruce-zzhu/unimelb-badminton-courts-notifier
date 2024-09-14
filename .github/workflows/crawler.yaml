@@ -1,7 +1,7 @@
 name: Run Crawler Daily
 
 on:
-  schedule:
+  # schedule:
     # - cron: '0 23 * * *'  # 9 AM AEST
     # - cron: '0 0 * * *'   # 10 AM AEST
     # - cron: '0 1 * * *'   # 11 AM AEST
