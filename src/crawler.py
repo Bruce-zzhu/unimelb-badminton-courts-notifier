@@ -23,7 +23,7 @@ class Crawler:
 
   def init_driver(self):
     options = Options()
-    options.add_argument("--headless")  
+    # options.add_argument("--headless")  
     # Disable driver logs
     options.add_argument("--log-level=3")  # INFO = 0, WARNING = 1, LOG_ERROR = 2, LOG_FATAL = 3
 
@@ -55,6 +55,7 @@ class Crawler:
     next_week_button = self.driver.find_element(By.XPATH, "//div[@class='sheduler-nav-btn next']")
     next_week_button.click()
     self.buttons = []
+    self.curr_button_index = -1
     time.sleep(2)
   
   def select_duration(self):
@@ -85,12 +86,18 @@ class Crawler:
 
     button.click()
     time.sleep(2)
+
+    self.refresh_buttons()
   
     # Extract the date and time from the reservation details
     date_element = self.driver.find_element(By.XPATH, "//div[@class='bm-facility-landing-page-summary']//div[3]")
-    time_element = self.driver.find_element(By.XPATH, "//div[@class='bm-facility-landing-page-summary']//div[4]")
-
     reservation_date = date_element.text.strip()
+
+    # No valid info shown
+    if not reservation_date:
+      return None
+
+    time_element = self.driver.find_element(By.XPATH, "//div[@class='bm-facility-landing-page-summary']//div[4]")
     reservation_time = time_element.text.strip()
 
     day, month, year = map(int, reservation_date.split('/'))
@@ -98,8 +105,6 @@ class Crawler:
 
     day_index = reservation_day.weekday()
     is_weekend = day_index in [SAT_INDEX, SUN_INDEX]
-
-    self.refresh_buttons()
 
     data = {
       "date": reservation_date,

@@ -45,7 +45,7 @@ def check_week_availability(week_name):
   if today in [MON_INDEX, TUE_INDEX, WED_INDEX]:
     search_context = SearchContext(BackwardSearch())
   elif today in [THU_INDEX, FRI_INDEX, SAT_INDEX]:
-    search_context = SearchContext(ForwardSearch())
+    search_context = SearchContext(ForwardSearch(today))
   else:
     search_context = SearchContext(SundaySearch())
 
