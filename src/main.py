@@ -46,7 +46,6 @@ def main():
       check_availability(get_court_url(court_name), court_name)
   except Exception as e:
     logging.error(f"An error occurred: {e}")
-    print(e)
     has_error = True
 
   crawler.driver.quit()
