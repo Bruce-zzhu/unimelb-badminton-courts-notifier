@@ -62,7 +62,7 @@ class BackwardSearch(SearchStrategy):
   Strategy when today is Mon or Tue or Wed (start day index is 0, 1, or 2)
   '''
   def search(self, week_name):
-    for button_index in range(len(crawler.buttons), 0, -1):
+    for button_index in range(len(crawler.buttons) - 1, -1, -1):
       # In case buttons overlap in consecutive slots, we check if the index is still valid
       if button_index >= len(crawler.buttons):
         break
