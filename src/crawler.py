@@ -24,7 +24,7 @@ class Crawler:
 
   def init_driver(self):
     options = Options()
-    # options.add_argument("--headless")  
+    options.add_argument("--headless")  
     # Disable driver logs
     options.add_argument("--log-level=3")  # INFO = 0, WARNING = 1, LOG_ERROR = 2, LOG_FATAL = 3
 
