@@ -18,31 +18,35 @@ def check_availability(page_url, court_name):
   crawler.select_duration()
 
   try:
-    found = check_week_availability(WEEK_NAME_1)
+    found_this = check_week_availability(WEEK_NAME_1)
   except Exception as e:
     logging.error(f"An error occurred: {e}")
     crawler.has_error = True
-    found = False
+    found_this = False
 
-  if not found:
-    logging.info(f"No 1h weekend slots found for {court_name} this week. Checking next week...")
-  else:
-    logging.info(f"Checking next week...")
-    
-  try:
-    crawler.go_to_next_week()
-    found = check_week_availability(WEEK_NAME_2)
-  except Exception as e:
-    logging.error(f"An error occurred: {e}")
-    crawler.has_error = True
-    found = False
-
-  if found:
+  if found_this:
     logging.info(f"Availability for {court_name}:")
     for one_hour_slot in crawler.data[court_name]:
       logging.info(one_hour_slot['message'])
+    logging.info(f"Checking next week...")
   else:
-    logging.info(f"No 1h weekend slots found for {court_name} this week or next week")
+    logging.info(f"No 1h weekend slots found for {court_name} this week. Checking next week...")
+    
+  try:
+    crawler.go_to_next_week()
+    found_next = check_week_availability(WEEK_NAME_2)
+  except Exception as e:
+    logging.error(f"An error occurred: {e}")
+    crawler.has_error = True
+    found_next = False
+
+  if found_next:
+    if not found_this:
+      logging.info(f"Availability for {court_name}:")
+    for one_hour_slot in crawler.data[court_name]:
+      logging.info(one_hour_slot['message'])
+  else:
+    logging.info(f"No 1h weekend slots found for {court_name} next week")
 
 
 def check_week_availability(week_name):
