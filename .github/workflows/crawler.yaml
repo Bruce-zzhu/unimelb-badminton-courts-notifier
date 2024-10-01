@@ -1,17 +1,17 @@
 name: Run Crawler Daily
 
 on:
-  # schedule:
-  #   - cron: '0 23 * * *'  # 9 AM AEST
-  #   - cron: '0 0 * * *'   # 10 AM AEST
-  #   - cron: '0 1 * * *'   # 11 AM AEST
-  #   - cron: '0 2 * * *'   # 12 PM AEST
-  #   - cron: '0 3 * * *'   # 1 PM AEST
-  #   - cron: '0 4 * * *'   # 2 PM AEST
-  #   - cron: '0 5 * * *'   # 3 PM AEST
-  #   - cron: '0 6 * * *'   # 4 PM AEST
-  #   - cron: '0 7 * * *'   # 5 PM AEST
-  #   - cron: '0 8 * * *'   # 6 PM AEST
+  schedule:
+    - cron: '0 23 * * *'  # 9 AM AEST
+    - cron: '0 0 * * *'   # 10 AM AEST
+    - cron: '0 1 * * *'   # 11 AM AEST
+    - cron: '0 2 * * *'   # 12 PM AEST
+    - cron: '0 3 * * *'   # 1 PM AEST
+    - cron: '0 4 * * *'   # 2 PM AEST
+    - cron: '0 5 * * *'   # 3 PM AEST
+    - cron: '0 6 * * *'   # 4 PM AEST
+    - cron: '0 7 * * *'   # 5 PM AEST
+    - cron: '0 8 * * *'   # 6 PM AEST
   workflow_dispatch:  # Allows manual triggering of the workflow from GitHub
 
 jobs:
